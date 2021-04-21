@@ -1,0 +1,33 @@
+{% extends "storyapp/index.html" %}
+
+{% block title %}Create Your Story{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<div class="card border-info">
+				<div class="card-header">
+					<h5>Create Your Story <a href="{% url 'stories' %}" class="btn btn-outline-info float-right">
+					Go back
+					</a></h5>
+
+				</div>
+					<div class="card-body">
+						<form method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{form.media}}
+							{{form | crispy}}
+							<button class="btn btn-outline-secondary">Post Story</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}

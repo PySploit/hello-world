@@ -1,0 +1,25 @@
+{% extends "storyapp/index.html" %}
+
+{% block title %}{{post.title}} | {{post.title_tag}}{% endblock title %}
+
+{% block content %}
+
+<div class="container m-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8 col-sm-8">
+		    <img src="{{post.header_image.url}}" class="card-img-top" alt="story image">
+		     <small class="float-md-right">Source: {{post.image_source}}</small><br>
+		    <h6 class="display-4 text-info">{{post.title}}</h6>
+		    <a href="{% url 'stories' %}" class="btn btn-outline-secondary float-right">Go Back</a>
+		    
+		    <p>By: {{post.author.last_name}} {{post.author.first_name}} - 
+		       <a href="{% url 'edit-story' post.pk %}">Edit</a> <a href="{% url 'delete-story' post.pk %}" class="text-danger">Delete</a></p> 
+		    
+		    <small>Created on: {{post.publish_date}}</small>
+		    <hr>
+		    <p>{{post.body | safe}}</p>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

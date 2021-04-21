@@ -1,0 +1,41 @@
+{% extends "storyapp/index.html" %}
+
+{% block title %}Delete| {{post.title}}{% endblock title %}
+
+{% block content %}
+
+
+
+<div class="container m-5 justify-content-center flex-fill">
+
+				<div class="container">
+					<h4 class="text-success">Delete Story</h4>
+				</div>
+				<br>
+				<div class="card mb-3 border-info" style="max-width: 540px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4">
+				      <img src="{{post.header_image.url}}" alt="" class="card-img card-img-overlay">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+
+				        <h5 class="card-title">{{post.title}}</h5>
+				        <p class="card-text">{{post.body |truncatewords:50 | safe}}</p>
+				        <p class="card-text"><small class="text-muted">Last updated {{post.updated_on}}</small></p>
+				        <form method="POST">
+						{% csrf_token %}
+
+							<p>Are you Sure you want to delete this story ?</p>
+							<button class="btn btn-outline-danger">Delete Story</button>
+							<a href="{% url 'story-detail' post.pk %}" class="btn btn-outline-success">No, Keep Story</a>	
+						</form>
+
+				      </div>
+				    </div>
+				  </div>
+			</div>
+			</div>
+
+
+{% endblock content %}

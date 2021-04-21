@@ -1,0 +1,44 @@
+{% extends "storyapp/index.html" %}
+
+{% block title %}Stories{% endblock title %}
+
+{% block content %}
+
+
+	
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-4 col-sm-12">
+				<div class="card border-dark">
+					<div class="card-header">
+						Featured
+					</div>
+					
+					<ul class="list-group list-group-flush">
+						{% for cat in cat_menu %}
+					    <li class="list-group-item"><a href="{% url 'category' cat %}">{{cat}}</a></li>
+					    {% endfor %}
+					</ul>
+					
+				</div>
+			</div>
+
+			<div class="col-md-8 col-sm-12">
+				<div class="row">
+					{% for post in object_list %}
+					<div class="col-md-4 col-sm-12">
+						<div class="card border-info shadow-lg p-3 mb-5 bg-white rounded hover-shadow" style="max-height: 100%;">
+							<img src="{{post.header_image.url}}" alt="header image" class="card-img-top">
+							<div class="card-body">
+								<h6 class="card-text">{{post.title}}</h6>
+								<a href="{% url 'story-detail' post.pk %}" class="btn btn-outline-dark">Read Story</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

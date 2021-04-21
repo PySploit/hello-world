@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>
+		{% block title %}Soulines | An Application for Sharing Stories{% endblock title %}
+		</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/7c4255a8eb.js" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> -->
+</head>
+<body>
+	
+	<!--Navbar Start-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'home' %}">Soulines</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav justify-content-center flex-fill">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'stories' %}">Stories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'create-story'  %}">Create Story</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link justify-content-end" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+	<!--Navbar End-->
+
+{% block content %}
+    
+
+
+	<div class="container m-5">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="display-4">Soulines</h1>
+				The platform for everyone to share stories and tell them in a way that brings to view the readers their passions, pains, joys and settle in having their impressions appreciated. You will find the site open up ang give you the platform to be the author of your choice and chose to tell stories of your own.  
+			</div>
+
+			<div class="col-md-6">
+				<img src="{% static 'images/art_lover.svg' %} " id="home-img" alt="" 
+				style="width: 100%;height: 90%;">
+			</div>
+		</div>
+	</div>
+
+
+
+		<!-- <div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <div class="row">
+		    	<div class="col-md-4 justify-content-center">
+		    		<p>Contact us</p>
+		    	</div>
+
+		    	<div class="col-md-4 justify-content-center">
+		    		<p>Social links</p>
+		    	</div>
+
+		    	<div class="col-md-4 justify-content-center">
+		    		<p>Contact us</p>
+		    	</div>
+
+		    	
+		    </div>
+		  </div>
+		</div> -->
+
+{% endblock content %}
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>
+
